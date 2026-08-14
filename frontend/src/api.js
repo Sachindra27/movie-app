@@ -1,4 +1,5 @@
-const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api/movies";
+const BASE_URL =
+  process.env.REACT_APP_API_URL || "http://52.3.253.66:5000/api/movies";
 
 async function handleResponse(res) {
   const data = await res.json().catch(() => ({}));
