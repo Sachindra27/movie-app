@@ -2,7 +2,7 @@
   "name": "movie-app-frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": "/",
+  "homepage": "https://sachindra27.github.io/movie-app/",
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
