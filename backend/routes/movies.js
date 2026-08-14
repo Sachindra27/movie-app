@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Movie = require("../models/Movie");
 
-// GET /api/movies - list all movies (newest first)
 router.get("/", async (req, res) => {
   try {
     const movies = await Movie.find().sort({ createdAt: -1 });
     res.json(movies);
   } catch (err) {
-    res.status(500).json({ message: "Failed to fetch movies", error: err.message });
+    res
+      .status(500)
+      .json({ message: "Failed to fetch movies", error: err.message });
   }
 });
 
@@ -19,7 +20,9 @@ router.get("/:id", async (req, res) => {
     if (!movie) return res.status(404).json({ message: "Movie not found" });
     res.json(movie);
   } catch (err) {
-    res.status(500).json({ message: "Failed to fetch movie", error: err.message });
+    res
+      .status(500)
+      .json({ message: "Failed to fetch movie", error: err.message });
   }
 });
 
@@ -30,7 +33,9 @@ router.post("/", async (req, res) => {
     const saved = await movie.save();
     res.status(201).json(saved);
   } catch (err) {
-    res.status(400).json({ message: "Failed to create movie", error: err.message });
+    res
+      .status(400)
+      .json({ message: "Failed to create movie", error: err.message });
   }
 });
 
@@ -44,7 +49,9 @@ router.put("/:id", async (req, res) => {
     if (!updated) return res.status(404).json({ message: "Movie not found" });
     res.json(updated);
   } catch (err) {
-    res.status(400).json({ message: "Failed to update movie", error: err.message });
+    res
+      .status(400)
+      .json({ message: "Failed to update movie", error: err.message });
   }
 });
 
@@ -55,7 +62,9 @@ router.delete("/:id", async (req, res) => {
     if (!deleted) return res.status(404).json({ message: "Movie not found" });
     res.json({ message: "Movie deleted", movie: deleted });
   } catch (err) {
-    res.status(500).json({ message: "Failed to delete movie", error: err.message });
+    res
+      .status(500)
+      .json({ message: "Failed to delete movie", error: err.message });
   }
 });
 
